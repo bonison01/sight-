@@ -108,7 +108,7 @@ const BannerCarousel = () => {
 
   if (loading) {
     return (
-      <div className="w-full h-[300px] md:h-[350px] bg-gray-200 animate-pulse flex items-center justify-center">
+      <div className="w-full h-[500px] md:h-[350px] bg-gray-200 animate-pulse flex items-center justify-center">
         <div className="text-gray-500">Loading banners...</div>
       </div>
     );
@@ -183,6 +183,7 @@ const BannerCarousel = () => {
           {bannerSettings.map((_, index) => (
             <button
               key={index}
+              // className={`w-3 h-3 rounded-full transition-colors ${
               className={`w-3 h-3 rounded-full transition-colors ${
                 index === currentIndex ? 'bg-gray-800' : 'bg-gray-400'
               }`}

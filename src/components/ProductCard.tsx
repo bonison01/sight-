@@ -1,4 +1,3 @@
-
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuthContext';
 import { useCart } from '@/hooks/useCartContext';
@@ -10,7 +9,7 @@ import { Product } from '@/types/product';
 
 interface ProductCardProps {
   product: Product;
-  showBuyNowAndCart?: boolean; // New prop to control which buttons to show
+  showBuyNowAndCart?: boolean;
 }
 
 const ProductCard = ({ product, showBuyNowAndCart = false }: ProductCardProps) => {
@@ -19,25 +18,15 @@ const ProductCard = ({ product, showBuyNowAndCart = false }: ProductCardProps) =
   const navigate = useNavigate();
 
   const handleAddToCart = () => {
-    if (isAuthenticated) {
-      addToCart(product.id, 1);
-    }
+    if (isAuthenticated) addToCart(product.id, 1);
   };
 
   const handleBuyNow = () => {
     if (isAuthenticated) {
-      // Add to cart and navigate to checkout
-      addToCart(product.id, 1).then(() => {
-        navigate('/checkout');
-      });
+      addToCart(product.id, 1).then(() => navigate('/checkout'));
     } else {
-      // Guest checkout with product data
       navigate('/checkout', { 
-        state: { 
-          guestCheckout: true,
-          product: product,
-          quantity: 1
-        }
+        state: { guestCheckout: true, product, quantity: 1 }
       });
     }
   };
@@ -46,7 +35,7 @@ const ProductCard = ({ product, showBuyNowAndCart = false }: ProductCardProps) =
   const hasOffer = product.offer_price && product.offer_price < product.price;
 
   return (
-    <Card className="h-full flex flex-col group hover:shadow-lg transition-shadow">
+    <Card className="h-full flex flex-col group hover:shadow-lg transition-shadow border-green-100 hover:border-green-400">
       <CardHeader className="p-0">
         <div className="relative overflow-hidden rounded-t-lg">
           <img
@@ -55,74 +44,81 @@ const ProductCard = ({ product, showBuyNowAndCart = false }: ProductCardProps) =
             className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
           />
           {product.featured && (
-            <Badge className="absolute top-2 left-2 bg-yellow-500 text-black">
+            <Badge className="absolute top-2 left-2 bg-green-600 text-white shadow-md">
               Featured
             </Badge>
           )}
           {hasOffer && (
-            <Badge className="absolute top-2 right-2 bg-red-500 text-white">
-              Sale
+            <Badge className="absolute top-2 right-2 bg-green-500 text-white shadow-md">
+              Offer
             </Badge>
           )}
           {product.stock_quantity === 0 && (
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-              <Badge variant="destructive" className="text-lg">Out of Stock</Badge>
+            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center rounded-t-lg">
+              <Badge variant="destructive" className="text-lg bg-red-600 text-white">
+                Out of Stock
+              </Badge>
             </div>
           )}
         </div>
       </CardHeader>
-      
+
       <CardContent className="flex-1 flex flex-col justify-between p-4">
         <div>
-          <CardTitle className="text-lg mb-2 line-clamp-2">{product.name}</CardTitle>
+          <CardTitle className="text-lg mb-2 line-clamp-2 text-gray-900">
+            {product.name}
+          </CardTitle>
           <p className="text-gray-600 text-sm mb-3 line-clamp-2">
             {product.description}
           </p>
-          
+
           <div className="mb-4">
             <div className="flex items-center space-x-2">
-              <span className="text-xl font-bold text-green-600">
+              <span className="text-xl font-bold text-green-700">
                 ₹{displayPrice}
               </span>
               {hasOffer && (
-                <span className="text-sm text-gray-500 line-through">
+                <span className="text-sm text-gray-400 line-through">
                   ₹{product.price}
                 </span>
               )}
             </div>
             {product.category && (
-              <Badge variant="outline" className="mt-2">
+              <Badge variant="outline" className="mt-2 border-green-300 text-green-700 bg-green-50">
                 {product.category.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
               </Badge>
             )}
           </div>
         </div>
-        
+
         <div className="space-y-2">
           {showBuyNowAndCart ? (
             <>
-              {/* Buy Now and Add to Cart buttons for signature products */}
-              <Button 
+              {/* 🟢 Buy Now */}
+              <Button
                 onClick={handleBuyNow}
-                className="w-full bg-black text-white hover:bg-gray-800"
+                className="w-full bg-green-700 text-white hover:bg-green-800 focus:ring-2 focus:ring-green-400 focus:ring-offset-2"
                 disabled={product.stock_quantity === 0}
               >
                 <ShoppingCart className="w-4 h-4 mr-2" />
                 {product.stock_quantity === 0 ? 'Out of Stock' : 'Buy Now'}
               </Button>
-              
+
+              {/* 🛒 Add to Cart */}
               {isAuthenticated && product.stock_quantity > 0 && (
-                <Button 
+                <Button
                   onClick={handleAddToCart}
                   variant="outline"
-                  className="w-full"
+                  className="w-full border-green-600 text-green-700 hover:bg-green-50"
                 >
+                  <ShoppingCart className="w-4 h-4 mr-2" />
                   Add to Cart
                 </Button>
               )}
-              
+
+              {/* 👁️ View Details */}
               <Link to={`/product/${product.id}`} className="w-full">
-                <Button variant="ghost" className="w-full">
+                <Button variant="ghost" className="w-full text-green-700 hover:text-green-800 hover:bg-green-50">
                   <Eye className="w-4 h-4 mr-2" />
                   View Details
                 </Button>
@@ -130,19 +126,22 @@ const ProductCard = ({ product, showBuyNowAndCart = false }: ProductCardProps) =
             </>
           ) : (
             <>
-              {/* Original buttons for other product displays */}
+              {/* 🟢 Default Layout */}
               <div className="flex space-x-2">
                 <Link to={`/product/${product.id}`} className="flex-1">
-                  <Button variant="outline" className="w-full">
+                  <Button
+                    variant="outline"
+                    className="w-full border-green-600 text-green-700 hover:bg-green-50"
+                  >
                     <Eye className="w-4 h-4 mr-2" />
                     View
                   </Button>
                 </Link>
-                
+
                 {isAuthenticated && product.stock_quantity > 0 && (
-                  <Button 
+                  <Button
                     onClick={handleAddToCart}
-                    className="flex-1"
+                    className="flex-1 bg-green-700 text-white hover:bg-green-800 focus:ring-2 focus:ring-green-400"
                   >
                     <ShoppingCart className="w-4 h-4 mr-2" />
                     Add to Cart

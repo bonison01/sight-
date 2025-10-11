@@ -28,7 +28,8 @@ const Contact = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-black text-white py-16">
+      <section className="bg-gradient-to-r from-green-600 to-green-800 text-white py-16">
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto">
@@ -88,11 +89,11 @@ const Contact = () => {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                   >
                     <option value="">Select a subject</option>
-                    <option value="general">General Inquiry</option>
+                    <option value="general">Delivery</option>
                     <option value="order">Order Question</option>
                     <option value="product">Product Information</option>
                     <option value="feedback">Feedback</option>
-                    <option value="wholesale">Wholesale Inquiry</option>
+                    {/* <option value="wholesale">Wholesale Inquiry</option> */}
                   </select>
                 </div>
 
@@ -114,7 +115,7 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-orange-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-orange-700 transition-colors"
+                  className="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-orange-700 transition-colors"
                 >
                   Send Message
                 </button>
@@ -131,24 +132,24 @@ const Contact = () => {
                   <div className="space-y-3">
                     <div>
                       <span className="font-medium text-gray-700">Email:</span>
-                      <span className="text-gray-600 ml-2">googoofoodsmoms@gmail.com</span>
+                      <span className="text-gray-600 ml-2">admin@mateng.com</span>
                     </div>
                     <div>
                       <span className="font-medium text-gray-700">Phone:</span>
-                      <span className="text-gray-600 ml-2">(+91) 6009809060</span>
+                      <span className="text-gray-600 ml-2">(+91) 8787649928</span>
                     </div>
                     <div>
                       <span className="font-medium text-gray-700">Address:</span>
-                      <span className="text-gray-600 ml-2">Goo Goo Foods
-                        Yaiskul Chingakham Leirak
-                        Imphal West, Manipur 795001
+                      <span className="text-gray-600 ml-2">Mateng
+                        Sagolband Sayang Leirak
+                        Imphal West, Manipur 795004
                       </span>
 
                     </div>
                   </div>
                 </div>
 
-                <div>
+                {/* <div>
                   <h3 className="text-xl font-semibold text-gray-800 mb-3">Business Hours</h3>
                   <div className="space-y-2">
                     <div className="flex justify-between">
@@ -164,7 +165,7 @@ const Contact = () => {
                       <span className="text-gray-600">Closed</span>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div>
                   <h3 className="text-xl font-semibold text-gray-800 mb-3">Quick Responses</h3>
@@ -174,14 +175,14 @@ const Contact = () => {
                   </p>
                 </div>
 
-                <div className="bg-orange-50 p-6 rounded-lg">
+                {/* <div className="bg-orange-50 p-6 rounded-lg">
                   <h3 className="text-xl font-semibold text-orange-800 mb-3">Wholesale Inquiries</h3>
                   <p className="text-gray-700">
                     Interested in carrying our products in your store? We'd love to discuss
                     wholesale opportunities with you. Please mention "Wholesale" in your
                     message subject.
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
