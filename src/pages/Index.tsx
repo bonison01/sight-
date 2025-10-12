@@ -117,7 +117,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Carousel */}
-      <BannerCarousel />
+      {/* <BannerCarousel /> */}
 
       {/* Featured Products */}
       <section className="py-16 bg-blue-50">
