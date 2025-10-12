@@ -98,7 +98,7 @@ const PaymentScreenshotUpload = ({
           </p>
           <div className="mt-4 p-3 bg-blue-50 rounded-md">
             <p className="text-blue-800 text-sm font-medium">
-              UPI ID: momsgoogoo@paytm
+              UPI ID: sample@okupi
             </p>
           </div>
         </div>

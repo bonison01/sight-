@@ -171,7 +171,7 @@ const Product = () => {
               )}
               
               <div className="flex items-center space-x-3 mb-4">
-                <span className="text-3xl font-bold text-green-600">
+                <span className="text-3xl font-bold text-blue-600">
                   ₹{displayPrice}
                 </span>
                 {hasOffer && (
