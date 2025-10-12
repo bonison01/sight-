@@ -17,7 +17,7 @@ const Footer = () => {
                 loading="lazy"
               />
               <span className="text-2xl font-bold text-white">
-                Vision<span className="text-blue-300">Well</span>
+                Safe<span className="text-blue-300">Sight</span>
               </span>
             </div>
 
