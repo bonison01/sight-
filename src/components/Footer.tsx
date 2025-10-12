@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="flex items-center mb-4">
               <img
                 src="/lovable-uploads/logo-blue.png"
-                alt="VisionWell Clinic"
+                alt="Safe Sight Logo"
                 className="h-10 w-auto mr-3"
                 loading="lazy"
               />
@@ -22,7 +22,7 @@ const Footer = () => {
             </div>
 
             <p className="text-blue-100 mb-6 max-w-md">
-              VisionWell is committed to providing the best in vision care — from premium lenses to expert eye check-ups. 
+              Safesight is committed to providing the best in vision care — from premium lenses to expert eye check-ups. 
               Helping you see life more clearly, every day.
             </p>
 
@@ -97,7 +97,7 @@ const Footer = () => {
         {/* Divider */}
         <div className="border-t border-blue-700 mt-10 pt-8 text-center">
           <p className="text-blue-200 text-sm">
-            © 2025 VisionWell Clinic. All rights reserved.
+            © 2025 SafeSight Clinic. All rights reserved.
           </p>
           <p className="text-blue-400 text-xs mt-1">
             Designed with care for better vision and a brighter future.

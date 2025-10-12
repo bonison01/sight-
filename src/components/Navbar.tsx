@@ -43,7 +43,7 @@ const Navbar = () => {
                   className="h-10 w-auto"
                 />
                 <span className="hidden md:block text-white text-xl font-semibold tracking-wide">
-                  Vision<span className="text-blue-200">Well</span>
+                  Safe<span className="text-blue-200">Sight</span>
                 </span>
               </Link>
             </div>
